@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 const MoviePage = () => {
   const [movies, setMovies] = useState([]);
+  // const [shouldFetch, setShouldFetch] = useState(false);
 
   const fetchMovie = async () => {
     try {
@@ -14,14 +15,17 @@ const MoviePage = () => {
     }
   };
 
-  useEffect(() => {
-    fetchMovie();
-  }, []);
+  // useEffect(() => {
+  //   if (shouldFetch) {
+  //     fetchMovie();
+  //   }
+  // }, [shouldFetch]); //Fetch only when shouldFetch changes to true
 
   return (
     <>
       <div>Hey! You are at the right place</div>
       <button onClick={fetchMovie}>Show movie details</button>
+      {/* <button onClick={() => setShouldFetch(true)}>Show movie details</button> */}
       {movies.length > 0 ? (
         movies.map((movie, index) => (
           <div key={index}>
